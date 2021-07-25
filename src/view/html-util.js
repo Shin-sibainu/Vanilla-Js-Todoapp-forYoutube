@@ -35,3 +35,10 @@ export function element(strings, ...values) {
     });
     return htmlToElement(htmlString);
 }
+
+export function render(bodyElement, containerElement) {
+   //containerElementの中身を空にする
+   containerElement.innerHTML = "";
+   //containerElementの子要素にbodyを追加する
+   containerElement.appendChild(bodyElement); 
+}
