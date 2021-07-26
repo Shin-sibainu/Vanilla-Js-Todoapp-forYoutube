@@ -1,9 +1,9 @@
-import {element, render} from "../src/view/html-util.js";
+import { element, render } from "../src/view/html-util.js";
 import { TodoListModel } from "./model/todoListModel.js";
 import { TodoItemModel } from "./model/todoItemModel.js";
 
 export class App {
-    constructor(){
+    constructor() {
         //1. TodoListの初期化
         this.todoListModel = new TodoListModel();
     }
@@ -18,16 +18,15 @@ export class App {
             const todoListElement = element`<ul />`;
             const todoItems = this.todoListModel.getTodoItems();
             todoItems.forEach(item => {
-                // 完了済みならchecked属性をつけ、未完了ならchecked属性を外す
                 const todoItemElement = item.completed
                     ? element`<li><input type="checkbox" class="checkbox" checked>
-                    <s>${item.title}</s>
-                    <button class="delete">x</button>
-                    </li>`
+        <s>${item.title}</s>
+        <button class="delete">x</button>
+        </li>`
                     : element`<li><input type="checkbox" class="checkbox">
-                    ${item.title}
-                    <button class="delete">x</button>
-                    </li>`;
+        ${item.title}
+        <button class="delete">x</button>
+        </li>`;
                 // チェックボックスがトグルしたときのイベントにリスナー関数を登録
                 const inputCheckboxElement = todoItemElement.querySelector(".checkbox");
                 inputCheckboxElement.addEventListener("change", () => {
